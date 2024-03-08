@@ -31,7 +31,6 @@ async def warship_job(time_of_day: str) -> None:
 async def main() -> None:
     logging.basicConfig(level=logging.INFO)
     scheduler = AsyncIOScheduler(timezone=pytz.timezone('Europe/Kiev'))
-    await hello_job()
     scheduler.add_job(hello_job, 'cron', hour=9, minute=30)
     scheduler.add_job(warship_job, 'cron', hour=10, minute=0, args=['ранок'])
     scheduler.start()
